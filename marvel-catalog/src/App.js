@@ -1,19 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 import BookGrid from './components/BookGrid';
-
-const books = [
-  // Mock data: Replace with API data later
-  { id: 1, title: 'Spider-Man', cover_image: 'https://static.wikia.nocookie.net/marveldatabase/images/5/5e/Motion_Picture_Funnies_Weekly_Vol_1_1.jpg/revision/latest?cb=20100122182911', rating: 4.5},
-];
+import BookDetails from './components/BookDetails';
+import Header from './components/Header';
 
 function App() {
+  const [books, setBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    // Fetch books from the API
+    axios.get('http://localhost:5000/books')
+      .then(response => {
+        setBooks(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the data!', error);
+      });
+  }, []);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<BookGrid books={books} />}  />
-        <Route path="/book/:id" element={<h1>Book Details Page</h1>} />
-      </Routes>
+      <Header />
+      <div className="app-container">
+        <input 
+          className="search-bar" 
+          placeholder="Search comics..."
+          value={searchTerm}
+          onChange={handleSearchChange} 
+          />
+        <Routes>
+          <Route path="/" element={<BookGrid books={books} searchTerm={searchTerm} />} />
+          <Route path="/book/:id" element={<BookDetails />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
