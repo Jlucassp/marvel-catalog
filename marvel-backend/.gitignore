@@ -1,38 +1,38 @@
-# Node.js dependencies
-node_modules/
+# # Node.js dependencies
+# node_modules/
 
-# Environment variables
-.env
+# # Environment variables
+# .env
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# # Logs
+# npm-debug.log*
+# yarn-debug.log*
+# yarn-error.log*
 
-# OS generated files
-.DS_Store
+# # OS generated files
+# .DS_Store
 
-# IDE specific files
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
+# # IDE specific files
+# .vscode/
+# .idea/
+# *.sublime-project
+# *.sublime-workspace
 
-# Production directories
-/dist
-/build
+# # Production directories
+# /dist
+# /build
 
-# Temporary files
-*.tmp
-*.swp
+# # Temporary files
+# *.tmp
+# *.swp
 
-# Debug files
-.nyc_output
-coverage/
+# # Debug files
+# .nyc_output
+# coverage/
 
-# Local AWS credentials
-.aws/
+# # Local AWS credentials
+# .aws/
 
-# Ignore Docker files (if applicable)
-Dockerfile
-docker-compose.yml
+# # Ignore Docker files (if applicable)
+# Dockerfile
+# docker-compose.yml
